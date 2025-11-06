@@ -8,9 +8,9 @@ import androidx.room.PrimaryKey
     tableName = "monthly_tasks",
     foreignKeys = [
         ForeignKey(
-            entity = QuarterOKR::class,
+            entity = KeyResult::class,
             parentColumns = ["id"],
-            childColumns = ["okrId"],
+            childColumns = ["keyResultId"],
             onDelete = ForeignKey.CASCADE
         )
     ]
@@ -18,7 +18,8 @@ import androidx.room.PrimaryKey
 data class MonthlyTask(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
-    val okrId: Long,
+    val keyResultId: Long,
+    val year: Int,
     val month: Int, // 1-12
     val title: String,
     val description: String = "",

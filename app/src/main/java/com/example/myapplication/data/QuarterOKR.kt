@@ -10,7 +10,6 @@ data class QuarterOKR(
     val year: Int,
     val quarter: Int, // 1, 2, 3, 4
     val objective: String,
-    val keyResults: String, // JSON array or comma-separated
     val createdAt: Long = System.currentTimeMillis(),
     val isCompleted: Boolean = false
 )

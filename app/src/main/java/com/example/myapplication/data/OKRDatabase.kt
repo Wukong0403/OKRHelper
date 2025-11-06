@@ -6,8 +6,8 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 @Database(
-    entities = [QuarterOKR::class, MonthlyTask::class, WeeklyTask::class],
-    version = 1,
+    entities = [QuarterOKR::class, KeyResult::class, MonthlyTask::class, WeeklyTask::class],
+    version = 2,
     exportSchema = false
 )
 abstract class OKRDatabase : RoomDatabase() {
@@ -23,7 +23,9 @@ abstract class OKRDatabase : RoomDatabase() {
                     context.applicationContext,
                     OKRDatabase::class.java,
                     "okr_database"
-                ).build()
+                )
+                    .fallbackToDestructiveMigration() // 简单起见，重新创建数据库
+                    .build()
                 INSTANCE = instance
                 instance
             }
